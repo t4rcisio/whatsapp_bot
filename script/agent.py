@@ -32,22 +32,31 @@ class Agent:
 
         while True:
 
-            chats = self.web.getElements(By.CLASS_NAME, 'x1iyjqo2')
+            #chats = self.web.getElements(By.CLASS_NAME, 'xuxw1ft')
+            chat_title = self.web.getText(By.XPATH, '//*[@id="pane-side"]/div[1]/div/div/div[1]', max=1)
 
-            if not isinstance(chats,list):
+
+            if not isinstance(chat_title, str):
                 continue
 
-            if len(chats) == 0:
+            if chat_title == "":
                 continue
 
-            for name in chats:
+            for index in range(1, 30):
 
-                user_name = self.getText(name)
+                chat_title = self.web.getText(By.XPATH, '//*[@id="pane-side"]/div[1]/div/div/div['+str(index)+']', max=1)
+
+                if not isinstance(chat_title, str):
+                    continue
+
+                user_name = chat_title.split("\n")[0]
+
+                #user_name = self.getText(name)
 
                 if user_name == False or user_name == "" or user_name not in ["Mãe", "Pai", 'Enzola']:
                     continue
 
-                if not name in self.chats:
+                if not user_name in self.chats:
                     self.chats[user_name]  = {"USER_MESSAGE": [], "AI_MESSAGE": [], "FULL_CONVERSATION": [], "HISTORY": []}
 
                 if self.openChat(user_name):

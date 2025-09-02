@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(779, 584)
+        Form.resize(779, 614)
         self.verticalLayout = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -23,13 +23,6 @@ class Ui_Form(object):
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.widget_2 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_2.setMinimumSize(QtCore.QSize(0, 100))
-        self.widget_2.setMaximumSize(QtCore.QSize(16777215, 100))
-        self.widget_2.setStyleSheet("background-color: #222831;\n"
-"border-radius:8px;")
-        self.widget_2.setObjectName("widget_2")
-        self.verticalLayout_2.addWidget(self.widget_2)
         self.widget_3 = QtWidgets.QWidget(parent=self.widget)
         self.widget_3.setStyleSheet("background-color: #393E46;\n"
 "border-radius:8px;")
@@ -80,44 +73,21 @@ class Ui_Form(object):
 "")
         self.start_agent.setObjectName("start_agent")
         self.verticalLayout_13.addWidget(self.start_agent)
-        self.live_chat = QtWidgets.QTextEdit(parent=self.widget_5)
-        self.live_chat.setStyleSheet("QTextEdit {\n"
-"        background-color: #FFF8F8;\n"
-"        color: rgb(0, 0, 0);\n"
-"        font-size: 14px;\n"
-"        padding: 5px;\n"
-"    }\n"
-"\n"
-"    QScrollBar:vertical {\n"
-"        background: #f0f0f0;\n"
-"        width: 12px;\n"
-"        margin: 5px 0 5px 0;\n"
-"        border: none;\n"
-"        border-radius: 6px;\n"
-"    }\n"
-"\n"
-"    QScrollBar::handle:vertical {\n"
-"        background: #c4c4c4;\n"
-"        min-height: 30px;\n"
-"        border-radius: 6px;\n"
-"    }\n"
-"\n"
-"    QScrollBar::handle:vertical:hover {\n"
-"        background: #a0a0a0;\n"
-"    }\n"
-"\n"
-"    QScrollBar::add-line:vertical,\n"
-"    QScrollBar::sub-line:vertical {\n"
-"        height: 0px;\n"
-"        subcontrol-origin: margin;\n"
-"    }\n"
-"\n"
-"    QScrollBar::add-page:vertical,\n"
-"    QScrollBar::sub-page:vertical {\n"
-"        background: none;\n"
-"    }")
-        self.live_chat.setObjectName("live_chat")
-        self.verticalLayout_13.addWidget(self.live_chat)
+        self.widget_2 = QtWidgets.QWidget(parent=self.widget_5)
+        self.widget_2.setObjectName("widget_2")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_2)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.widget_15 = QtWidgets.QWidget(parent=self.widget_2)
+        self.widget_15.setMinimumSize(QtCore.QSize(200, 0))
+        self.widget_15.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.widget_15.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_15.setObjectName("widget_15")
+        self.horizontalLayout_4.addWidget(self.widget_15)
+        self.widget_16 = QtWidgets.QWidget(parent=self.widget_2)
+        self.widget_16.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_16.setObjectName("widget_16")
+        self.horizontalLayout_4.addWidget(self.widget_16)
+        self.verticalLayout_13.addWidget(self.widget_2)
         self.verticalLayout_6.addWidget(self.widget_5)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
@@ -309,16 +279,187 @@ class Ui_Form(object):
         self.sys_template.setObjectName("sys_template")
         self.verticalLayout_7.addWidget(self.sys_template)
         self.horizontalLayout.addWidget(self.widget_7)
-        self.widget_8 = QtWidgets.QWidget(parent=self.widget_4)
+        self.verticalLayout_4.addWidget(self.widget_4)
+        self.tabWidget.addTab(self.page, "")
+        self.tab_3 = QtWidgets.QWidget()
+        self.tab_3.setObjectName("tab_3")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.tab_3)
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.widget_17 = QtWidgets.QWidget(parent=self.tab_3)
+        self.widget_17.setStyleSheet("background-color: #222831;\n"
+"border-radius:8px;")
+        self.widget_17.setObjectName("widget_17")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_17)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.widget_18 = QtWidgets.QWidget(parent=self.widget_17)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_8.sizePolicy().hasHeightForWidth())
-        self.widget_8.setSizePolicy(sizePolicy)
-        self.widget_8.setObjectName("widget_8")
-        self.horizontalLayout.addWidget(self.widget_8)
-        self.verticalLayout_4.addWidget(self.widget_4)
-        self.tabWidget.addTab(self.page, "")
+        sizePolicy.setHeightForWidth(self.widget_18.sizePolicy().hasHeightForWidth())
+        self.widget_18.setSizePolicy(sizePolicy)
+        self.widget_18.setObjectName("widget_18")
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.widget_18)
+        self.verticalLayout_14.setContentsMargins(-1, -1, -1, 0)
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.widget_19 = QtWidgets.QWidget(parent=self.widget_18)
+        self.widget_19.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_19.setObjectName("widget_19")
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.widget_19)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
+        self.widget_20 = QtWidgets.QWidget(parent=self.widget_19)
+        self.widget_20.setObjectName("widget_20")
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.widget_20)
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.label_6 = QtWidgets.QLabel(parent=self.widget_20)
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout_16.addWidget(self.label_6)
+        self.widget_24 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_24.setObjectName("widget_24")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.widget_24)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.label_7 = QtWidgets.QLabel(parent=self.widget_24)
+        self.label_7.setObjectName("label_7")
+        self.verticalLayout_20.addWidget(self.label_7)
+        self.tool_name = QtWidgets.QLineEdit(parent=self.widget_24)
+        self.tool_name.setMinimumSize(QtCore.QSize(0, 35))
+        self.tool_name.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.tool_name.setStyleSheet("background-color: #FFF8F8;\n"
+"color: rgb(34, 40, 49);\n"
+" padding: 5px;\n"
+"")
+        self.tool_name.setObjectName("tool_name")
+        self.verticalLayout_20.addWidget(self.tool_name)
+        self.verticalLayout_16.addWidget(self.widget_24)
+        self.widget_25 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_25.setObjectName("widget_25")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.widget_25)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.label_8 = QtWidgets.QLabel(parent=self.widget_25)
+        self.label_8.setObjectName("label_8")
+        self.verticalLayout_21.addWidget(self.label_8)
+        self.tool_description = QtWidgets.QTextEdit(parent=self.widget_25)
+        self.tool_description.setStyleSheet("QTextEdit {\n"
+"        background-color: #FFF8F8;\n"
+"        color: rgb(0, 0, 0);\n"
+"        font-size: 14px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"\n"
+"    QScrollBar:vertical {\n"
+"        background: #f0f0f0;\n"
+"        width: 12px;\n"
+"        margin: 5px 0 5px 0;\n"
+"        border: none;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #c4c4c4;\n"
+"        min-height: 30px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background: #a0a0a0;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-line:vertical,\n"
+"    QScrollBar::sub-line:vertical {\n"
+"        height: 0px;\n"
+"        subcontrol-origin: margin;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-page:vertical,\n"
+"    QScrollBar::sub-page:vertical {\n"
+"        background: none;\n"
+"    }")
+        self.tool_description.setObjectName("tool_description")
+        self.verticalLayout_21.addWidget(self.tool_description)
+        self.verticalLayout_16.addWidget(self.widget_25)
+        self.widget_26 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_26.setObjectName("widget_26")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.widget_26)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.label_9 = QtWidgets.QLabel(parent=self.widget_26)
+        self.label_9.setObjectName("label_9")
+        self.verticalLayout_22.addWidget(self.label_9)
+        self.tool_path = QtWidgets.QLineEdit(parent=self.widget_26)
+        self.tool_path.setMinimumSize(QtCore.QSize(0, 35))
+        self.tool_path.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.tool_path.setStyleSheet("background-color: #FFF8F8;\n"
+"color: rgb(34, 40, 49);\n"
+" padding: 5px;\n"
+"")
+        self.tool_path.setObjectName("tool_path")
+        self.verticalLayout_22.addWidget(self.tool_path)
+        self.verticalLayout_16.addWidget(self.widget_26)
+        self.widget_27 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_27.setObjectName("widget_27")
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout(self.widget_27)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.label_10 = QtWidgets.QLabel(parent=self.widget_27)
+        self.label_10.setObjectName("label_10")
+        self.verticalLayout_23.addWidget(self.label_10)
+        self.tool_interpreter = QtWidgets.QLineEdit(parent=self.widget_27)
+        self.tool_interpreter.setMinimumSize(QtCore.QSize(0, 35))
+        self.tool_interpreter.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.tool_interpreter.setStyleSheet("background-color: #FFF8F8;\n"
+"color: rgb(34, 40, 49);\n"
+" padding: 5px;\n"
+"")
+        self.tool_interpreter.setObjectName("tool_interpreter")
+        self.verticalLayout_23.addWidget(self.tool_interpreter)
+        self.verticalLayout_16.addWidget(self.widget_27)
+        self.widget_21 = QtWidgets.QWidget(parent=self.widget_20)
+        self.widget_21.setObjectName("widget_21")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget_21)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_6.setSpacing(6)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.verticalLayout_16.addWidget(self.widget_21)
+        self.verticalLayout_15.addWidget(self.widget_20)
+        self.include_btn = QtWidgets.QPushButton(parent=self.widget_19)
+        self.include_btn.setMinimumSize(QtCore.QSize(0, 30))
+        self.include_btn.setStyleSheet("\n"
+"  QPushButton {\n"
+"                background-color: rgb(34, 40, 49);\n"
+"                    color:rgb(255, 255, 255);\n"
+"            }\n"
+"\n"
+"\n"
+"  QPushButton:hover {\n"
+"                background-color: rgb(57, 62, 70);\n"
+"            }\n"
+"")
+        self.include_btn.setObjectName("include_btn")
+        self.verticalLayout_15.addWidget(self.include_btn)
+        self.verticalLayout_14.addWidget(self.widget_19)
+        self.horizontalLayout_5.addWidget(self.widget_18, 0, QtCore.Qt.AlignmentFlag.AlignTop)
+        self.widget_23 = QtWidgets.QWidget(parent=self.widget_17)
+        self.widget_23.setObjectName("widget_23")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.widget_23)
+        self.verticalLayout_18.setContentsMargins(-1, 0, -1, 0)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.label_3 = QtWidgets.QLabel(parent=self.widget_23)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_18.addWidget(self.label_3)
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.widget_23)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 350, 520))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_18.addWidget(self.scrollArea)
+        self.horizontalLayout_5.addWidget(self.widget_23)
+        self.verticalLayout_19.addWidget(self.widget_17)
+        self.tabWidget.addTab(self.tab_3, "")
+        self.tab_4 = QtWidgets.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.tabWidget.addTab(self.tab_4, "")
         self.verticalLayout_3.addWidget(self.tabWidget)
         self.verticalLayout_2.addWidget(self.widget_3)
         self.verticalLayout.addWidget(self.widget)
@@ -330,7 +471,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.start_agent.setText(_translate("Form", "COMEÇAR"))
+        self.start_agent.setText(_translate("Form", "INICIAR"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "WhatsApp"))
         self.label_5.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">RESPONDER A PARTIR DE:</span></p></body></html>"))
         self.now_btn.setText(_translate("Form", "AGORA"))
@@ -338,6 +479,15 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Form", "Chat Config"))
         self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TEMPLATE</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.page), _translate("Form", "AI Config"))
+        self.label_6.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TOOLS </span></p></body></html>"))
+        self.label_7.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">NAME</span></p></body></html>"))
+        self.label_8.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">DESCRIPTION</span></p></body></html>"))
+        self.label_9.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">PYTHON PATH</span></p></body></html>"))
+        self.label_10.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">INTERPRETER</span></p></body></html>"))
+        self.include_btn.setText(_translate("Form", "INCLUDE"))
+        self.label_3.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">ACTIVE TOOLS</span></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Form", "Tools"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Form", "Charts"))
 
 
 if __name__ == "__main__":
