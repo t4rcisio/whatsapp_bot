@@ -4,7 +4,7 @@ import os
 
 from filelock import FileLock
 
-DATA_PATH = "./database"
+DATA_PATH = ".\database"
 os.makedirs(DATA_PATH, exist_ok=True)
 
 def chats(data=False):
@@ -43,5 +43,4 @@ def __dataControl(path, data=False):
 
                     return res
     except:
-        print(traceback.format_exc())
         return None

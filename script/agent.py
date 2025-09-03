@@ -1,5 +1,4 @@
 import locale
-import time
 import traceback
 
 from selenium.webdriver.common.action_chains import ActionChains
@@ -11,9 +10,10 @@ import datetime
 
 from ollama import chat
 
+from script import supervisor
 from services import webEngine
 
-import pyperclip
+from services import storage
 
 
 class Agent:
@@ -22,9 +22,11 @@ class Agent:
     def __init__(self):
 
         self.chats = {}
+        self.supervisor = supervisor.Supervisor()
 
 
     def run(self):
+
 
         self.start_selenium()
 
@@ -53,15 +55,24 @@ class Agent:
 
                 #user_name = self.getText(name)
 
-                if user_name == False or user_name == "" or user_name not in ["Mãe", "Pai", 'Enzola']:
+                if user_name == False or user_name == "": #or user_name not in ["Mãe", "Pai", 'Enzola']:
                     continue
 
                 if not user_name in self.chats:
-                    self.chats[user_name]  = {"USER_MESSAGE": [], "AI_MESSAGE": [], "FULL_CONVERSATION": [], "HISTORY": []}
+                    self.chats[user_name]  = {"USER_MESSAGE": [], "AI_MESSAGE": [], "FULL_CONVERSATION": [], "HISTORY": [], "SLEEP": True}
 
                 if self.openChat(user_name):
 
-                    self.chats[user_name]['USER_MESSAGE'] = self.get_chat_messages(user_name, 'message-in')
+
+                    u_message = self.get_chat_messages(user_name, 'message-in')
+
+                    if u_message == []:
+                        continue
+
+                    if u_message == self.chats[user_name]['USER_MESSAGE']:
+                        continue
+
+                    self.chats[user_name]['USER_MESSAGE'] = u_message
                     self.chats[user_name]['AI_MESSAGE'] = self.get_chat_messages('assistant', 'message-out')
 
                     if len(self.chats[user_name]['USER_MESSAGE']) == 0:
@@ -69,7 +80,13 @@ class Agent:
 
                     self.chats[user_name]["FULL_CONVERSATION"] = []
 
+                    self.chats[user_name]["SLEEP"] = False
                     self.build_conversation(user_name)
+
+                    self.fix_ui_message(user_name)
+
+                    if self.chats[user_name]["SLEEP"] == True:
+                        continue
 
                     if self.chats[user_name]["FULL_CONVERSATION"] == []:
                         continue
@@ -79,6 +96,10 @@ class Agent:
                     if len(self.chats[user_name]["HISTORY"]) == 0:
                         continue
 
+                    validator = self.supervisor.ask(self.chats[user_name]["HISTORY"][-1])
+
+                    if
+
                     message = self.ask(user_name)
 
 
@@ -87,14 +108,33 @@ class Agent:
 
                     message = message.split("</think>")[-1].strip()
 
-                    self.chats[user_name]['AI_MESSAGE'].append([datetime.datetime.now(), message, 'assistant'])
-
                     if self.sendMessage(message):
+                        self.chats[user_name]['AI_MESSAGE'].append([datetime.datetime.now(), message, 'assistant'])
                         print("Mensagem enviada")
                     else:
                         print("Mensagem não enviada")
                 else:
                     print("Mensagem não enviada")
+
+
+    def fix_ui_message(self, user_name):
+
+        data = []
+        for item in self.chats[user_name]["FULL_CONVERSATION"]:
+
+            m_data = item
+            m_data[0] = str(item[0])
+            data.append(m_data)
+
+
+        u_messages = storage.chats()
+
+        if not isinstance(u_messages, dict):
+            u_messages = {}
+
+        u_messages[user_name] = data
+        storage.chats(u_messages)
+
 
     def build_conversation(self, name):
 
@@ -112,14 +152,15 @@ class Agent:
 
 
             if all_msgs[-1][2] == 'assistant':
-                return
+                self.chats[name]["SLEEP"] = True
 
-            if not (all_msgs[-1][0] + datetime.timedelta(minutes=5)) > datetime.datetime.now():
-                return
+            if not (all_msgs[-1][0] + datetime.timedelta(minutes=5)) < datetime.datetime.now():
+                self.chats[name]["SLEEP"] = True
 
             self.chats[name]["FULL_CONVERSATION"] = all_msgs
 
         except:
+            self.chats[name]["SLEEP"] = True
             print(traceback.format_exc())
 
 
@@ -184,20 +225,32 @@ class Agent:
     def sendMessage(self, message):
 
         message = message.replace("**","*")
-        message += Keys.ENTER
 
         try:
             self.web.click(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p', max=2, timeAfter=1)
             for token in message.split("\n"):
-                self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p',token+" ", max=2)
+                s_tokens = self.split_token(token, 30)
+                for s_token in s_tokens:
+                    self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p',s_token, max=2)
+                self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p'," ", max=2)
                 self.shift_enter(self.web.driver)
 
-            self.web.click(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[4]/button', max=2)
+
+            send = self.web.getElement(By.XPATH,'//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[4]/button', max=2)
+            try:
+                valor = send.get_attribute("aria-label")
+                if valor == 'Enviar':
+                    self.web.click(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[4]/button',max=2)
+            except:
+                pass
 
             return True
         except:
             print(traceback.format_exc())
             return False
+
+    def split_token(self, texto, n):
+        return [texto[i:i + n] for i in range(0, len(texto), n)]
 
     def shift_enter(self, driver):
         ActionChains(driver).key_down(Keys.SHIFT).send_keys(Keys.ENTER).key_up(Keys.SHIFT).perform()

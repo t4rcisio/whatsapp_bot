@@ -18,13 +18,40 @@ class Ui_Form(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.widget = QtWidgets.QWidget(parent=Form)
-        self.widget.setStyleSheet("background-color: #393E46;\n"
+        self.widget.setStyleSheet("background-color: #075E54;\n"
 "border-radius:8px;")
         self.widget.setObjectName("widget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.widget_32 = QtWidgets.QWidget(parent=self.widget)
+        self.widget_32.setMinimumSize(QtCore.QSize(0, 50))
+        self.widget_32.setObjectName("widget_32")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.widget_32)
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.label_4 = QtWidgets.QLabel(parent=self.widget_32)
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_11.addWidget(self.label_4)
+        self.save_btn = QtWidgets.QPushButton(parent=self.widget_32)
+        self.save_btn.setMinimumSize(QtCore.QSize(30, 30))
+        self.save_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.save_btn.setStyleSheet("\n"
+"  QPushButton {\n"
+"                background-color: rgb(37, 211, 102);\n"
+"                    color:rgb(255, 255, 255);\n"
+"            }\n"
+"\n"
+"\n"
+"  QPushButton:hover {\n"
+"                background-color: rgb(11, 153, 137);\n"
+"            }")
+        self.save_btn.setText("")
+        self.save_btn.setObjectName("save_btn")
+        self.horizontalLayout_11.addWidget(self.save_btn)
+        self.verticalLayout_2.addWidget(self.widget_32)
         self.widget_3 = QtWidgets.QWidget(parent=self.widget)
-        self.widget_3.setStyleSheet("background-color: #393E46;\n"
+        self.widget_3.setStyleSheet("background-color:rgb(7, 94, 84);\n"
 "border-radius:8px;")
         self.widget_3.setObjectName("widget_3")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_3)
@@ -34,58 +61,165 @@ class Ui_Form(object):
         self.tabWidget = QtWidgets.QTabWidget(parent=self.widget_3)
         self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
 "        border: 0px;\n"
-"        background: transparent;\n"
+"        background: #128C7E;\n"
 "    }\n"
 "    QTabBar::tab {\n"
-"        background: rgb(94, 111, 136);\n"
+"        background: #128C7E;\n"
 "        color: white;\n"
 "        padding: 8px;\n"
 "        border-radius:8px;\n"
 "    }\n"
 "    QTabBar::tab:selected {\n"
-"        background: rgb(34, 40, 49);\n"
+"        background: #25D366;\n"
 "    }")
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
+        self.tab.setStyleSheet("")
         self.tab.setObjectName("tab")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.tab)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.widget_5 = QtWidgets.QWidget(parent=self.tab)
-        self.widget_5.setStyleSheet("background-color: #222831;\n"
+        self.widget_5.setStyleSheet("background-color: #25D366;\n"
 "border-radius:8px;")
         self.widget_5.setObjectName("widget_5")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.widget_5)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
-        self.start_agent = QtWidgets.QPushButton(parent=self.widget_5)
-        self.start_agent.setMinimumSize(QtCore.QSize(0, 30))
-        self.start_agent.setStyleSheet("\n"
+        self.widget_8 = QtWidgets.QWidget(parent=self.widget_5)
+        self.widget_8.setObjectName("widget_8")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.widget_8)
+        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.widget_28 = QtWidgets.QWidget(parent=self.widget_8)
+        self.widget_28.setObjectName("widget_28")
+        self.horizontalLayout_9.addWidget(self.widget_28)
+        self.widget_22 = QtWidgets.QWidget(parent=self.widget_8)
+        self.widget_22.setObjectName("widget_22")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.widget_22)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.horizontalLayout_9.addWidget(self.widget_22)
+        self.stop_agent_btn = QtWidgets.QPushButton(parent=self.widget_8)
+        self.stop_agent_btn.setMinimumSize(QtCore.QSize(0, 30))
+        self.stop_agent_btn.setStyleSheet("\n"
 "  QPushButton {\n"
-"                background-color: rgb(94, 111, 136);\n"
+"                background-color: rgb(7, 94, 84);\n"
 "                    color:rgb(255, 255, 255);\n"
 "            }\n"
 "\n"
 "\n"
 "  QPushButton:hover {\n"
-"                background-color: rgb(57, 62, 70);\n"
+"                background-color: rgb(11, 153, 137);\n"
 "            }\n"
 "")
-        self.start_agent.setObjectName("start_agent")
-        self.verticalLayout_13.addWidget(self.start_agent)
+        self.stop_agent_btn.setObjectName("stop_agent_btn")
+        self.horizontalLayout_9.addWidget(self.stop_agent_btn)
+        self.start_agent_btn = QtWidgets.QPushButton(parent=self.widget_8)
+        self.start_agent_btn.setMinimumSize(QtCore.QSize(0, 30))
+        self.start_agent_btn.setStyleSheet("\n"
+"  QPushButton {\n"
+"                background-color: rgb(7, 94, 84);\n"
+"                    color:rgb(255, 255, 255);\n"
+"            }\n"
+"\n"
+"\n"
+"  QPushButton:hover {\n"
+"                background-color: rgb(11, 153, 137);\n"
+"            }\n"
+"\n"
+"")
+        self.start_agent_btn.setObjectName("start_agent_btn")
+        self.horizontalLayout_9.addWidget(self.start_agent_btn)
+        self.verticalLayout_13.addWidget(self.widget_8)
         self.widget_2 = QtWidgets.QWidget(parent=self.widget_5)
         self.widget_2.setObjectName("widget_2")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_2)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.widget_15 = QtWidgets.QWidget(parent=self.widget_2)
-        self.widget_15.setMinimumSize(QtCore.QSize(200, 0))
-        self.widget_15.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.widget_15.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_15.setMinimumSize(QtCore.QSize(300, 0))
+        self.widget_15.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.widget_15.setStyleSheet("background-color: rgb(7, 94, 84);")
         self.widget_15.setObjectName("widget_15")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_15)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.scroll_chats = QtWidgets.QScrollArea(parent=self.widget_15)
+        self.scroll_chats.setStyleSheet("    QScrollBar:vertical {\n"
+"        background: #f0f0f0;\n"
+"        width: 12px;\n"
+"        margin: 5px 0 5px 0;\n"
+"        border: none;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #c4c4c4;\n"
+"        min-height: 30px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background: #a0a0a0;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-line:vertical,\n"
+"    QScrollBar::sub-line:vertical {\n"
+"        height: 0px;\n"
+"        subcontrol-origin: margin;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-page:vertical,\n"
+"    QScrollBar::sub-page:vertical {\n"
+"        background: none;\n"
+"    }")
+        self.scroll_chats.setWidgetResizable(True)
+        self.scroll_chats.setObjectName("scroll_chats")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 282, 421))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.scroll_chats.setWidget(self.scrollAreaWidgetContents_2)
+        self.horizontalLayout_7.addWidget(self.scroll_chats)
         self.horizontalLayout_4.addWidget(self.widget_15)
         self.widget_16 = QtWidgets.QWidget(parent=self.widget_2)
-        self.widget_16.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_16.setStyleSheet("background-color: rgb(7, 94, 84);")
         self.widget_16.setObjectName("widget_16")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.widget_16)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.scroll_messages = QtWidgets.QScrollArea(parent=self.widget_16)
+        self.scroll_messages.setStyleSheet("    QScrollBar:vertical {\n"
+"        background: #f0f0f0;\n"
+"        width: 12px;\n"
+"        margin: 5px 0 5px 0;\n"
+"        border: none;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #c4c4c4;\n"
+"        min-height: 30px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background: #a0a0a0;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-line:vertical,\n"
+"    QScrollBar::sub-line:vertical {\n"
+"        height: 0px;\n"
+"        subcontrol-origin: margin;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-page:vertical,\n"
+"    QScrollBar::sub-page:vertical {\n"
+"        background: none;\n"
+"    }")
+        self.scroll_messages.setWidgetResizable(True)
+        self.scroll_messages.setObjectName("scroll_messages")
+        self.sc = QtWidgets.QWidget()
+        self.sc.setGeometry(QtCore.QRect(0, 0, 401, 421))
+        self.sc.setObjectName("sc")
+        self.scroll_messages.setWidget(self.sc)
+        self.horizontalLayout_8.addWidget(self.scroll_messages)
         self.horizontalLayout_4.addWidget(self.widget_16)
         self.verticalLayout_13.addWidget(self.widget_2)
         self.verticalLayout_6.addWidget(self.widget_5)
@@ -97,7 +231,7 @@ class Ui_Form(object):
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.widget_6 = QtWidgets.QWidget(parent=self.tab_2)
-        self.widget_6.setStyleSheet("background-color: #222831;\n"
+        self.widget_6.setStyleSheet("background-color: #25D366;\n"
 "border-radius:8px;")
         self.widget_6.setObjectName("widget_6")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_6)
@@ -112,7 +246,8 @@ class Ui_Form(object):
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.widget_9)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.widget_11 = QtWidgets.QWidget(parent=self.widget_9)
-        self.widget_11.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_11.setStyleSheet("background-color: rgb(18, 140, 126)\n"
+"")
         self.widget_11.setObjectName("widget_11")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.widget_11)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
@@ -133,7 +268,7 @@ class Ui_Form(object):
         self.user_date = QtWidgets.QLineEdit(parent=self.widget_14)
         self.user_date.setMinimumSize(QtCore.QSize(0, 35))
         self.user_date.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.user_date.setStyleSheet("background-color: #FFF8F8;\n"
+        self.user_date.setStyleSheet("        background-color: #ece5dd;\n"
 "color: rgb(34, 40, 49);\n"
 " padding: 5px;\n"
 "")
@@ -142,7 +277,7 @@ class Ui_Form(object):
         self.user_hour = QtWidgets.QLineEdit(parent=self.widget_14)
         self.user_hour.setMinimumSize(QtCore.QSize(0, 35))
         self.user_hour.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.user_hour.setStyleSheet("background-color: #FFF8F8;\n"
+        self.user_hour.setStyleSheet("        background-color: #ece5dd;\n"
 "color: rgb(34, 40, 49);\n"
 " padding: 5px;\n"
 "")
@@ -154,18 +289,50 @@ class Ui_Form(object):
         self.now_btn.setMinimumSize(QtCore.QSize(0, 30))
         self.now_btn.setStyleSheet("\n"
 "  QPushButton {\n"
-"                background-color: rgb(34, 40, 49);\n"
+"                background-color: rgb(7, 94, 84);\n"
 "                    color:rgb(255, 255, 255);\n"
 "            }\n"
 "\n"
 "\n"
 "  QPushButton:hover {\n"
-"                background-color: rgb(57, 62, 70);\n"
+"                background-color: rgb(11, 153, 137);\n"
 "            }\n"
+"\n"
 "")
         self.now_btn.setObjectName("now_btn")
         self.verticalLayout_11.addWidget(self.now_btn)
         self.verticalLayout_12.addWidget(self.widget_11)
+        self.widget_29 = QtWidgets.QWidget(parent=self.widget_9)
+        self.widget_29.setStyleSheet("background-color: rgb(18, 140, 126);")
+        self.widget_29.setObjectName("widget_29")
+        self.verticalLayout_24 = QtWidgets.QVBoxLayout(self.widget_29)
+        self.verticalLayout_24.setObjectName("verticalLayout_24")
+        self.widget_30 = QtWidgets.QWidget(parent=self.widget_29)
+        self.widget_30.setObjectName("widget_30")
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.widget_30)
+        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.label_11 = QtWidgets.QLabel(parent=self.widget_30)
+        self.label_11.setObjectName("label_11")
+        self.verticalLayout_25.addWidget(self.label_11)
+        self.widget_31 = QtWidgets.QWidget(parent=self.widget_30)
+        self.widget_31.setObjectName("widget_31")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_31)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_10.setSpacing(6)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.response_delay = QtWidgets.QLineEdit(parent=self.widget_31)
+        self.response_delay.setMinimumSize(QtCore.QSize(0, 35))
+        self.response_delay.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.response_delay.setStyleSheet("        background-color: #ece5dd;\n"
+"color: rgb(34, 40, 49);\n"
+" padding: 5px;\n"
+"")
+        self.response_delay.setObjectName("response_delay")
+        self.horizontalLayout_10.addWidget(self.response_delay)
+        self.verticalLayout_25.addWidget(self.widget_31)
+        self.verticalLayout_24.addWidget(self.widget_30)
+        self.verticalLayout_12.addWidget(self.widget_29)
         self.widget_12 = QtWidgets.QWidget(parent=self.widget_9)
         self.widget_12.setObjectName("widget_12")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.widget_12)
@@ -182,7 +349,7 @@ class Ui_Form(object):
         self.verticalLayout_8.addWidget(self.label_2)
         self.daily_notices = QtWidgets.QTextEdit(parent=self.widget_10)
         self.daily_notices.setStyleSheet("QTextEdit {\n"
-"        background-color: #FFF8F8;\n"
+"        background-color: #ece5dd;\n"
 "        color: rgb(0, 0, 0);\n"
 "        font-size: 14px;\n"
 "        padding: 5px;\n"
@@ -228,7 +395,7 @@ class Ui_Form(object):
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.widget_4 = QtWidgets.QWidget(parent=self.page)
-        self.widget_4.setStyleSheet("background-color: #222831;\n"
+        self.widget_4.setStyleSheet("background-color: #25D366;\n"
 "border-radius:8px;")
         self.widget_4.setObjectName("widget_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_4)
@@ -236,13 +403,54 @@ class Ui_Form(object):
         self.widget_7 = QtWidgets.QWidget(parent=self.widget_4)
         self.widget_7.setObjectName("widget_7")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.widget_7)
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label = QtWidgets.QLabel(parent=self.widget_7)
+        self.scrollArea_2 = QtWidgets.QScrollArea(parent=self.widget_7)
+        self.scrollArea_2.setStyleSheet("    QScrollBar:vertical {\n"
+"        background: #f0f0f0;\n"
+"        width: 12px;\n"
+"        margin: 5px 0 5px 0;\n"
+"        border: none;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #c4c4c4;\n"
+"        min-height: 30px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background: #a0a0a0;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-line:vertical,\n"
+"    QScrollBar::sub-line:vertical {\n"
+"        height: 0px;\n"
+"        subcontrol-origin: margin;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-page:vertical,\n"
+"    QScrollBar::sub-page:vertical {\n"
+"        background: none;\n"
+"    }")
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 731, 938))
+        self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_26.setContentsMargins(0, 0, 3, 0)
+        self.verticalLayout_26.setSpacing(0)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.label = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_3)
         self.label.setObjectName("label")
-        self.verticalLayout_7.addWidget(self.label)
-        self.sys_template = QtWidgets.QTextEdit(parent=self.widget_7)
+        self.verticalLayout_26.addWidget(self.label)
+        self.sys_template = QtWidgets.QTextEdit(parent=self.scrollAreaWidgetContents_3)
+        self.sys_template.setMinimumSize(QtCore.QSize(0, 446))
         self.sys_template.setStyleSheet("QTextEdit {\n"
-"        background-color: #FFF8F8;\n"
+"               background-color: #ece5dd;\n"
 "        color: rgb(0, 0, 0);\n"
 "        font-size: 14px;\n"
 "        padding: 5px;\n"
@@ -277,7 +485,51 @@ class Ui_Form(object):
 "        background: none;\n"
 "    }")
         self.sys_template.setObjectName("sys_template")
-        self.verticalLayout_7.addWidget(self.sys_template)
+        self.verticalLayout_26.addWidget(self.sys_template)
+        self.label_12 = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_3)
+        self.label_12.setObjectName("label_12")
+        self.verticalLayout_26.addWidget(self.label_12)
+        self.supervisor_template = QtWidgets.QTextEdit(parent=self.scrollAreaWidgetContents_3)
+        self.supervisor_template.setMinimumSize(QtCore.QSize(0, 446))
+        self.supervisor_template.setStyleSheet("QTextEdit {\n"
+"               background-color: #ece5dd;\n"
+"        color: rgb(0, 0, 0);\n"
+"        font-size: 14px;\n"
+"        padding: 5px;\n"
+"    }\n"
+"\n"
+"    QScrollBar:vertical {\n"
+"        background: #f0f0f0;\n"
+"        width: 12px;\n"
+"        margin: 5px 0 5px 0;\n"
+"        border: none;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical {\n"
+"        background: #c4c4c4;\n"
+"        min-height: 30px;\n"
+"        border-radius: 6px;\n"
+"    }\n"
+"\n"
+"    QScrollBar::handle:vertical:hover {\n"
+"        background: #a0a0a0;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-line:vertical,\n"
+"    QScrollBar::sub-line:vertical {\n"
+"        height: 0px;\n"
+"        subcontrol-origin: margin;\n"
+"    }\n"
+"\n"
+"    QScrollBar::add-page:vertical,\n"
+"    QScrollBar::sub-page:vertical {\n"
+"        background: none;\n"
+"    }")
+        self.supervisor_template.setObjectName("supervisor_template")
+        self.verticalLayout_26.addWidget(self.supervisor_template)
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_7.addWidget(self.scrollArea_2)
         self.horizontalLayout.addWidget(self.widget_7)
         self.verticalLayout_4.addWidget(self.widget_4)
         self.tabWidget.addTab(self.page, "")
@@ -288,7 +540,7 @@ class Ui_Form(object):
         self.verticalLayout_19.setSpacing(0)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.widget_17 = QtWidgets.QWidget(parent=self.tab_3)
-        self.widget_17.setStyleSheet("background-color: #222831;\n"
+        self.widget_17.setStyleSheet("background-color: #25D366;\n"
 "border-radius:8px;")
         self.widget_17.setObjectName("widget_17")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_17)
@@ -304,7 +556,7 @@ class Ui_Form(object):
         self.verticalLayout_14.setContentsMargins(-1, -1, -1, 0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.widget_19 = QtWidgets.QWidget(parent=self.widget_18)
-        self.widget_19.setStyleSheet("background-color: rgb(94, 111, 136);")
+        self.widget_19.setStyleSheet("background-color: rgb(18, 140, 126);")
         self.widget_19.setObjectName("widget_19")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.widget_19)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
@@ -326,7 +578,7 @@ class Ui_Form(object):
         self.tool_name = QtWidgets.QLineEdit(parent=self.widget_24)
         self.tool_name.setMinimumSize(QtCore.QSize(0, 35))
         self.tool_name.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.tool_name.setStyleSheet("background-color: #FFF8F8;\n"
+        self.tool_name.setStyleSheet("        background-color: #ece5dd;\n"
 "color: rgb(34, 40, 49);\n"
 " padding: 5px;\n"
 "")
@@ -342,7 +594,7 @@ class Ui_Form(object):
         self.verticalLayout_21.addWidget(self.label_8)
         self.tool_description = QtWidgets.QTextEdit(parent=self.widget_25)
         self.tool_description.setStyleSheet("QTextEdit {\n"
-"        background-color: #FFF8F8;\n"
+"               background-color: #ece5dd;\n"
 "        color: rgb(0, 0, 0);\n"
 "        font-size: 14px;\n"
 "        padding: 5px;\n"
@@ -389,7 +641,7 @@ class Ui_Form(object):
         self.tool_path = QtWidgets.QLineEdit(parent=self.widget_26)
         self.tool_path.setMinimumSize(QtCore.QSize(0, 35))
         self.tool_path.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.tool_path.setStyleSheet("background-color: #FFF8F8;\n"
+        self.tool_path.setStyleSheet("        background-color: #ece5dd;\n"
 "color: rgb(34, 40, 49);\n"
 " padding: 5px;\n"
 "")
@@ -406,7 +658,7 @@ class Ui_Form(object):
         self.tool_interpreter = QtWidgets.QLineEdit(parent=self.widget_27)
         self.tool_interpreter.setMinimumSize(QtCore.QSize(0, 35))
         self.tool_interpreter.setMaximumSize(QtCore.QSize(16777215, 35))
-        self.tool_interpreter.setStyleSheet("background-color: #FFF8F8;\n"
+        self.tool_interpreter.setStyleSheet("        background-color: #ece5dd;\n"
 "color: rgb(34, 40, 49);\n"
 " padding: 5px;\n"
 "")
@@ -425,13 +677,13 @@ class Ui_Form(object):
         self.include_btn.setMinimumSize(QtCore.QSize(0, 30))
         self.include_btn.setStyleSheet("\n"
 "  QPushButton {\n"
-"                background-color: rgb(34, 40, 49);\n"
+"                background-color: rgb(7, 94, 84);\n"
 "                    color:rgb(255, 255, 255);\n"
 "            }\n"
 "\n"
 "\n"
 "  QPushButton:hover {\n"
-"                background-color: rgb(57, 62, 70);\n"
+"                background-color: rgb(11, 153, 137);\n"
 "            }\n"
 "")
         self.include_btn.setObjectName("include_btn")
@@ -450,7 +702,7 @@ class Ui_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 350, 520))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 350, 464))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_18.addWidget(self.scrollArea)
@@ -471,13 +723,17 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.start_agent.setText(_translate("Form", "INICIAR"))
+        self.label_4.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:16pt; font-weight:600; color:#ffffff;\">WHATSAPP AI ASSISTANT</span></p></body></html>"))
+        self.stop_agent_btn.setText(_translate("Form", "PARAR"))
+        self.start_agent_btn.setText(_translate("Form", "INICIAR"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "WhatsApp"))
         self.label_5.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">RESPONDER A PARTIR DE:</span></p></body></html>"))
         self.now_btn.setText(_translate("Form", "AGORA"))
+        self.label_11.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">DELAY NA RESPOSTA ( SEGUNDOS )</span></p></body></html>"))
         self.label_2.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">AVISOS DO DIA</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Form", "Chat Config"))
-        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TEMPLATE</span></p></body></html>"))
+        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TEMPLATE ASSISTENTE</span></p></body></html>"))
+        self.label_12.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TEMPLATE SUPERVISOR</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.page), _translate("Form", "AI Config"))
         self.label_6.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600; color:#ffffff;\">TOOLS </span></p></body></html>"))
         self.label_7.setText(_translate("Form", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600; color:#ffffff;\">NAME</span></p></body></html>"))

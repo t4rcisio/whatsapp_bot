@@ -74,6 +74,6 @@ class ThreadService(QMainWindow):
         self.thread.finished.connect(self.thread.deleteLater)
         self.worker.progress.connect(self.update)
 
-        self.beginApp(self.th_id)
+        self.beginApp()
         self.thread.start()
         self.thread.finished.connect(self.end)

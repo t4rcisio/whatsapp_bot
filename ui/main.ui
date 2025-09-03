@@ -32,14 +32,79 @@
    <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
-      <string notr="true">background-color: #393E46;
+      <string notr="true">background-color: #075E54;
 border-radius:8px;</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
+       <widget class="QWidget" name="widget_32" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; color:#ffffff;&quot;&gt;WHATSAPP AI ASSISTANT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="save_btn">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+  QPushButton {
+                background-color: rgb(37, 211, 102);
+					color:rgb(255, 255, 255);
+            }
+
+
+  QPushButton:hover {
+                background-color: rgb(11, 153, 137);
+            }</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
        <widget class="QWidget" name="widget_3" native="true">
         <property name="styleSheet">
-         <string notr="true">background-color: #393E46;
+         <string notr="true">background-color:rgb(7, 94, 84);
 border-radius:8px;</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -63,22 +128,25 @@ border-radius:8px;</string>
            <property name="styleSheet">
             <string notr="true">QTabWidget::pane {
         border: 0px;
-        background: transparent;
+        background: #128C7E;
     }
     QTabBar::tab {
-        background: rgb(94, 111, 136);
+        background: #128C7E;
         color: white;
         padding: 8px;
 		border-radius:8px;
     }
     QTabBar::tab:selected {
-        background: rgb(34, 40, 49);
+        background: #25D366;
     }</string>
            </property>
            <property name="currentIndex">
             <number>0</number>
            </property>
            <widget class="QWidget" name="tab">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <attribute name="title">
              <string>WhatsApp</string>
             </attribute>
@@ -101,34 +169,87 @@ border-radius:8px;</string>
              <item>
               <widget class="QWidget" name="widget_5" native="true">
                <property name="styleSheet">
-                <string notr="true">background-color: #222831;
+                <string notr="true">background-color: #25D366;
 border-radius:8px;</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_13">
                 <item>
-                 <widget class="QPushButton" name="start_agent">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">
+                 <widget class="QWidget" name="widget_8" native="true">
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QWidget" name="widget_28" native="true"/>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_22" native="true">
+                     <layout class="QVBoxLayout" name="verticalLayout_17"/>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="stop_agent_btn">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
   QPushButton {
-                background-color: rgb(94, 111, 136);
+                background-color: rgb(7, 94, 84);
 					color:rgb(255, 255, 255);
             }
 
 
   QPushButton:hover {
-                background-color: rgb(57, 62, 70);
+                background-color: rgb(11, 153, 137);
             }
 </string>
-                  </property>
-                  <property name="text">
-                   <string>INICIAR</string>
-                  </property>
+                     </property>
+                     <property name="text">
+                      <string>PARAR</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="start_agent_btn">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+  QPushButton {
+                background-color: rgb(7, 94, 84);
+					color:rgb(255, 255, 255);
+            }
+
+
+  QPushButton:hover {
+                background-color: rgb(11, 153, 137);
+            }
+
+</string>
+                     </property>
+                     <property name="text">
+                      <string>INICIAR</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                 <item>
@@ -138,26 +259,124 @@ border-radius:8px;</string>
                     <widget class="QWidget" name="widget_15" native="true">
                      <property name="minimumSize">
                       <size>
-                       <width>200</width>
+                       <width>300</width>
                        <height>0</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>200</width>
+                       <width>300</width>
                        <height>16777215</height>
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(94, 111, 136);</string>
+                      <string notr="true">background-color: rgb(7, 94, 84);</string>
                      </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_7">
+                      <item>
+                       <widget class="QScrollArea" name="scroll_chats">
+                        <property name="styleSheet">
+                         <string notr="true">    QScrollBar:vertical {
+        background: #f0f0f0;
+        width: 12px;
+        margin: 5px 0 5px 0;
+        border: none;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #c4c4c4;
+        min-height: 30px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #a0a0a0;
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical {
+        height: 0px;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }</string>
+                        </property>
+                        <property name="widgetResizable">
+                         <bool>true</bool>
+                        </property>
+                        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                         <property name="geometry">
+                          <rect>
+                           <x>0</x>
+                           <y>0</y>
+                           <width>282</width>
+                           <height>421</height>
+                          </rect>
+                         </property>
+                        </widget>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                    <item>
                     <widget class="QWidget" name="widget_16" native="true">
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(94, 111, 136);</string>
+                      <string notr="true">background-color: rgb(7, 94, 84);</string>
                      </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_8">
+                      <item>
+                       <widget class="QScrollArea" name="scroll_messages">
+                        <property name="styleSheet">
+                         <string notr="true">    QScrollBar:vertical {
+        background: #f0f0f0;
+        width: 12px;
+        margin: 5px 0 5px 0;
+        border: none;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #c4c4c4;
+        min-height: 30px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #a0a0a0;
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical {
+        height: 0px;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }</string>
+                        </property>
+                        <property name="widgetResizable">
+                         <bool>true</bool>
+                        </property>
+                        <widget class="QWidget" name="sc">
+                         <property name="geometry">
+                          <rect>
+                           <x>0</x>
+                           <y>0</y>
+                           <width>401</width>
+                           <height>421</height>
+                          </rect>
+                         </property>
+                        </widget>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
@@ -191,7 +410,7 @@ border-radius:8px;</string>
              <item>
               <widget class="QWidget" name="widget_6" native="true">
                <property name="styleSheet">
-                <string notr="true">background-color: #222831;
+                <string notr="true">background-color: #25D366;
 border-radius:8px;</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -207,7 +426,8 @@ border-radius:8px;</string>
                    <item>
                     <widget class="QWidget" name="widget_11" native="true">
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(94, 111, 136);</string>
+                      <string notr="true">background-color: rgb(18, 140, 126)
+</string>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_11">
                       <item>
@@ -265,7 +485,7 @@ border-radius:8px;</string>
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: #FFF8F8;
+                               <string notr="true">        background-color: #ece5dd;
 color: rgb(34, 40, 49);
  padding: 5px;
 </string>
@@ -287,7 +507,7 @@ color: rgb(34, 40, 49);
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: #FFF8F8;
+                               <string notr="true">        background-color: #ece5dd;
 color: rgb(34, 40, 49);
  padding: 5px;
 </string>
@@ -311,19 +531,97 @@ color: rgb(34, 40, 49);
                         <property name="styleSheet">
                          <string notr="true">
   QPushButton {
-                background-color: rgb(34, 40, 49);
+                background-color: rgb(7, 94, 84);
 					color:rgb(255, 255, 255);
             }
 
 
   QPushButton:hover {
-                background-color: rgb(57, 62, 70);
+                background-color: rgb(11, 153, 137);
             }
+
 </string>
                         </property>
                         <property name="text">
                          <string>AGORA</string>
                         </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_29" native="true">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(18, 140, 126);</string>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_24">
+                      <item>
+                       <widget class="QWidget" name="widget_30" native="true">
+                        <layout class="QVBoxLayout" name="verticalLayout_25">
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="label_11">
+                           <property name="text">
+                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ffffff;&quot;&gt;DELAY NA RESPOSTA ( SEGUNDOS )&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QWidget" name="widget_31" native="true">
+                           <layout class="QHBoxLayout" name="horizontalLayout_10">
+                            <property name="spacing">
+                             <number>6</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QLineEdit" name="response_delay">
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>35</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>35</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">        background-color: #ece5dd;
+color: rgb(34, 40, 49);
+ padding: 5px;
+</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
                        </widget>
                       </item>
                      </layout>
@@ -357,7 +655,7 @@ color: rgb(34, 40, 49);
                     <widget class="QTextEdit" name="daily_notices">
                      <property name="styleSheet">
                       <string notr="true">QTextEdit {
-        background-color: #FFF8F8;
+        background-color: #ece5dd;
         color: rgb(0, 0, 0);
         font-size: 14px;
         padding: 5px;
@@ -425,25 +723,106 @@ color: rgb(34, 40, 49);
              <item>
               <widget class="QWidget" name="widget_4" native="true">
                <property name="styleSheet">
-                <string notr="true">background-color: #222831;
+                <string notr="true">background-color: #25D366;
 border-radius:8px;</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
                  <widget class="QWidget" name="widget_7" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item>
-                    <widget class="QLabel" name="label">
-                     <property name="text">
-                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;TEMPLATE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QTextEdit" name="sys_template">
+                    <widget class="QScrollArea" name="scrollArea_2">
                      <property name="styleSheet">
-                      <string notr="true">QTextEdit {
-        background-color: #FFF8F8;
+                      <string notr="true">    QScrollBar:vertical {
+        background: #f0f0f0;
+        width: 12px;
+        margin: 5px 0 5px 0;
+        border: none;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #c4c4c4;
+        min-height: 30px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #a0a0a0;
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical {
+        height: 0px;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }</string>
+                     </property>
+                     <property name="widgetResizable">
+                      <bool>true</bool>
+                     </property>
+                     <widget class="QWidget" name="scrollAreaWidgetContents_3">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>731</width>
+                        <height>938</height>
+                       </rect>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_26">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label">
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;TEMPLATE ASSISTENTE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="sys_template">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>446</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+               background-color: #ece5dd;
         color: rgb(0, 0, 0);
         font-size: 14px;
         padding: 5px;
@@ -477,7 +856,65 @@ border-radius:8px;</string>
     QScrollBar::sub-page:vertical {
         background: none;
     }</string>
-                     </property>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_12">
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;TEMPLATE SUPERVISOR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QTextEdit" name="supervisor_template">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>446</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QTextEdit {
+               background-color: #ece5dd;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    QScrollBar:vertical {
+        background: #f0f0f0;
+        width: 12px;
+        margin: 5px 0 5px 0;
+        border: none;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #c4c4c4;
+        min-height: 30px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #a0a0a0;
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical {
+        height: 0px;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
                     </widget>
                    </item>
                   </layout>
@@ -511,7 +948,7 @@ border-radius:8px;</string>
              <item>
               <widget class="QWidget" name="widget_17" native="true">
                <property name="styleSheet">
-                <string notr="true">background-color: #222831;
+                <string notr="true">background-color: #25D366;
 border-radius:8px;</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -530,7 +967,7 @@ border-radius:8px;</string>
                    <item>
                     <widget class="QWidget" name="widget_19" native="true">
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(94, 111, 136);</string>
+                      <string notr="true">background-color: rgb(18, 140, 126);</string>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_15">
                       <item>
@@ -580,7 +1017,7 @@ border-radius:8px;</string>
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: #FFF8F8;
+                               <string notr="true">        background-color: #ece5dd;
 color: rgb(34, 40, 49);
  padding: 5px;
 </string>
@@ -604,7 +1041,7 @@ color: rgb(34, 40, 49);
                              <widget class="QTextEdit" name="tool_description">
                               <property name="styleSheet">
                                <string notr="true">QTextEdit {
-        background-color: #FFF8F8;
+               background-color: #ece5dd;
         color: rgb(0, 0, 0);
         font-size: 14px;
         padding: 5px;
@@ -669,7 +1106,7 @@ color: rgb(34, 40, 49);
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: #FFF8F8;
+                               <string notr="true">        background-color: #ece5dd;
 color: rgb(34, 40, 49);
  padding: 5px;
 </string>
@@ -704,7 +1141,7 @@ color: rgb(34, 40, 49);
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: #FFF8F8;
+                               <string notr="true">        background-color: #ece5dd;
 color: rgb(34, 40, 49);
  padding: 5px;
 </string>
@@ -749,13 +1186,13 @@ color: rgb(34, 40, 49);
                         <property name="styleSheet">
                          <string notr="true">
   QPushButton {
-                background-color: rgb(34, 40, 49);
+                background-color: rgb(7, 94, 84);
 					color:rgb(255, 255, 255);
             }
 
 
   QPushButton:hover {
-                background-color: rgb(57, 62, 70);
+                background-color: rgb(11, 153, 137);
             }
 </string>
                         </property>
@@ -797,7 +1234,7 @@ color: rgb(34, 40, 49);
                         <x>0</x>
                         <y>0</y>
                         <width>350</width>
-                        <height>520</height>
+                        <height>464</height>
                        </rect>
                       </property>
                      </widget>

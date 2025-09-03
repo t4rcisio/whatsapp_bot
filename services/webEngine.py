@@ -324,31 +324,30 @@ class Webdriver_X:
                 "download.prompt_for_download": False,
                 "download.directory_upgrade": True,
                 "safebrowsing.enabled": True,
-                "plugins.always_open_pdf_externally": True,  # Evita abertura no visualizador
+                "plugins.always_open_pdf_externally": True,
             })
 
             chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
             chrome_options.add_argument('--kiosk-printing')
             chrome_options.add_argument('--log-level=1')
             chrome_options.add_argument('--safebrowsing-disable-download-protection')
+
+            # 🔹 Usar um perfil fixo do Chrome (mantém login, cookies, etc.)
+            user_data_dir = os.path.expanduser("~/.selenium_profile")  # pasta personalizada
+            chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
+
+            # (Opcional) escolher um perfil específico dentro do Chrome
+            #chrome_options.add_argument("--profile-directory=Default")
 
             if path is None:
                 self.driver = webdriver.Chrome(options=chrome_options)
 
             # Habilitar monitoramento de rede
             self.driver.execute_cdp_cmd("Network.enable", {})
-
-            self.pdf_url = None
-
-            def intercept_request(response):
-                """ Captura a URL do PDF nas requisições """
-                if "pdf" in response.get("response", {}).get("url", "").lower():
-                    self.pdf_url = response["response"]["url"]
-
-            # Adiciona listener para capturar a resposta da rede
             self.driver.execute_cdp_cmd("Network.setCacheDisabled", {"cacheDisabled": True})
-            self.driver.execute_script("window.addEventListener('load', () => {console.log('Página carregada')});")
+            self.driver.execute_script(
+                "window.addEventListener('load', () => {console.log('Página carregada')});"
+            )
 
             return self.driver
         except Exception as e:
