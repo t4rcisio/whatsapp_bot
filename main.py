@@ -1,16 +1,14 @@
+
 import sys
 import traceback
 import os
-
 import pymsgbox
-from PyQt6 import QtWidgets, QtGui, QtCore  # Corrigido: Import de QtCore
-from PyQt6.QtCore import  QUrl, QStandardPaths # Adicionado QStandardPaths
-from PyQt6.QtWebEngineCore import QWebEngineProfile, QWebEngineSettings, QWebEnginePage  # Adicionado QWebEngineSettings
-from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6 import QtWidgets, QtGui, QtCore
+from PyQt6.QtGui import  QIntValidator
 
 from pages import home
-from script import agent
 from services import threads_man
+from script import maester
 
 from services import storage
 
@@ -34,7 +32,7 @@ class App:
             if os.path.exists(icon_path):
                 icon2.addPixmap(QtGui.QPixmap(icon_path), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
             self.Form.setWindowIcon(icon2)
-            self.Form.setWindowTitle("AGENT STUDIO - WWP " + str(VERSION))
+            self.Form.setWindowTitle("WHATSAPP AI ASSISTANT" + str(VERSION))
             self.Form.showMaximized()
 
             sys.exit(self.app.exec())
@@ -76,14 +74,63 @@ class App:
         self.messagesVBox.setSpacing(12)
         self.homePage.scroll_messages.setWidget(messagesWindow)
 
+        validator = QIntValidator(0, 999999)
+
+        self.homePage.response_delay.setValidator(validator)
+        self.homePage.response_at.setValidator(validator)
+
         self.homePage.stop_agent_btn.setVisible(False)
 
+        self.homePage.send_message.clicked.connect(lambda state: self.ask_agent())
+
+        storage.chats({})
+        self.current_text = ""
         self.chats = {}
         self.__update()
+        self.__update_chat()
+
+        self.sApp = maester.Maester()
+
+        self.is_running = False
+
+
+    def ask_agent(self):
+
+
+        if self.is_running:
+            return
+
+        if self.homePage.user_message_input.text().strip() == "":
+            return
+
+        m_data = self.__check_config()
+
+        if len(m_data) > 1:
+            pymsgbox.alert(m_data, "ALERTA")
+            return
+
+        self.is_running = True
+
+
+        payload = {
+            "FX": self.sApp.live_chat,
+            "DATA": [{"role": "user", "content": self.homePage.user_message_input.text()}]
+        }
+
+        storage.chat("\nUSUÁRIO: " +self.homePage.user_message_input.text() + "\n\n")
+
+        self.rn = threads_man.ThreadService()
+        self.rn.startThread(payload, self.__begin, self.__end, self.__update_chat)
+        self.homePage.user_message_input.setText("")
+
 
     def exec_slm(self):
 
-        self.sApp = agent.Agent()
+        m_data = self.__check_config()
+
+        if len(m_data) > 1:
+            pymsgbox.alert(m_data, "ALERTA")
+            return
 
         payload = {
             "FX": self.sApp.run,
@@ -95,6 +142,7 @@ class App:
 
     def __begin(self):
 
+        self.is_running = True
         self.homePage.stop_agent_btn.setVisible(True)
         self.clear_layout(self.chatsVBox)
         self.chats = {}
@@ -102,10 +150,31 @@ class App:
 
     def __end(self):
 
+        self.is_running = False
         self.homePage.stop_agent_btn.setVisible(False)
+        self.homePage.live_chat_text.insertPlainText("\n\n")
+
+    def __update_chat(self):
+
+        self.is_running = True
+        data = storage.chat()
+
+        if not isinstance(data, str):
+            return
+
+        self.homePage.live_chat_text.setHtml("<p>" + data.replace("\n", "<br>") + "</p>")
+
+        self.current_text = data
+
+        self.homePage.live_chat_text.verticalScrollBar().setValue(
+            self.homePage.live_chat_text.verticalScrollBar().maximum()
+        )
+
+
 
     def __update(self):
 
+        self.is_running = True
         data = storage.chats()
 
         if not isinstance(data, dict):
@@ -145,12 +214,52 @@ class App:
 
             self.chatsVBox.addWidget(chat_widget)
 
+    def __check_config(self):
+
+        data = storage.config()
+
+        if not isinstance(data, dict):
+            return "False"
+
+
+        keys = {'TEMPLATE': str, 'SUPERVISOR': str, 'RESPONSE_DELAY': int,  'RESPONSE_AT': int}
+
+        message = ''
+
+        for key in keys:
+
+            if not key in data:
+                message += f"O campo {key} não foi preenchidon\n"
+
+            elif keys[key] == int:
+                try:
+                    data[key] = int(data[key])
+                except:
+                    message += f"O campo {key} não foi preenchido com um dado inválido\n"
+
+            elif not isinstance(data[key], keys[key]):
+                message += f"O campo {key} não foi preenchido com um dado inválido\n"
+
+            elif keys[key] == str:
+                try:
+                    if len(data[key]) < 20:
+                        message += f"O campo {key} deve ter pelo menos 20 caracteres\n"
+                except:
+                    pass
+
+        return message
+
+
+
+
+
     def save(self):
 
         config = {
             "TEMPLATE": self.homePage.sys_template.toPlainText(),
             "SUPERVISOR": self.homePage.supervisor_template.toPlainText(),
             "RESPONSE_DELAY": self.homePage.response_delay.text(),
+            "RESPONSE_AT": self.homePage.response_at.text()
         }
 
         storage.config(config)
@@ -166,6 +275,7 @@ class App:
         self.homePage.sys_template.setText(config["TEMPLATE"])
         self.homePage.supervisor_template.setText(config["SUPERVISOR"])
         self.homePage.response_delay.setText(config["RESPONSE_DELAY"])
+        self.homePage.response_at.setText(config["RESPONSE_AT"])
 
 
 
@@ -224,6 +334,10 @@ class App:
 
 
 if __name__ == "__main__":
-    # set_start_method('spawn') # Pode ser necessário em alguns casos, mas geralmente não para isso
+    from multiprocessing import set_start_method
+
+    set_start_method("spawn")
+
+
     app = App()
     app.initialize()

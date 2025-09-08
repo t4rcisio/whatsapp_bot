@@ -1,4 +1,6 @@
 import locale
+import re
+import time
 import traceback
 
 from selenium.webdriver.common.action_chains import ActionChains
@@ -8,21 +10,24 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import datetime
 
-from ollama import chat
 
-from script import supervisor
 from services import webEngine
-
 from services import storage
 
+from script import  llm_services
 
-class Agent:
+
+
+
+class Maester:
 
 
     def __init__(self):
 
         self.chats = {}
-        self.supervisor = supervisor.Supervisor()
+        self.agent_executor = False
+
+        self.llm_services = llm_services.Lmm_services()
 
 
     def run(self):
@@ -44,7 +49,7 @@ class Agent:
             if chat_title == "":
                 continue
 
-            for index in range(1, 30):
+            for index in range(1, 6):
 
                 chat_title = self.web.getText(By.XPATH, '//*[@id="pane-side"]/div[1]/div/div/div['+str(index)+']', max=1)
 
@@ -95,13 +100,18 @@ class Agent:
 
                     if len(self.chats[user_name]["HISTORY"]) == 0:
                         continue
+                    self.chats[user_name]["FULL_CONVERSATION"] = self.chats[user_name]["FULL_CONVERSATION"][-10:]
+                    messages_input = []
 
-                    validator = self.supervisor.ask(self.chats[user_name]["HISTORY"][-1])
+                    for message_a in self.chats[user_name]["FULL_CONVERSATION"]:
 
-                    if
 
-                    message = self.ask(user_name)
+                        if message_a[2] != "assistant":
+                            message_a[2] = "user"
 
+                        messages_input.append({"role": message_a[2], "content": message_a[1]})
+
+                    message =  self.live_chat(messages_input)
 
                     if message == False:
                         continue
@@ -116,6 +126,7 @@ class Agent:
                 else:
                     print("Mensagem não enviada")
 
+            self.web.driver.get("https://web.whatsapp.com/")
 
     def fix_ui_message(self, user_name):
 
@@ -138,6 +149,18 @@ class Agent:
 
     def build_conversation(self, name):
 
+        data = storage.config()
+
+        try:
+            delay = int(str(data["RESPONSE_DELAY"]).strip())
+        except:
+            delay = 30
+
+        try:
+            response_at = int(str(data["RESPONSE_AT"]).strip())
+        except:
+            response_at = 30
+
         try:
             user_msgs = self.chats[name]["USER_MESSAGE"]
             ai_msgs = self.chats[name]["AI_MESSAGE"]
@@ -150,11 +173,19 @@ class Agent:
 
             # salva no dicionário
 
+            if not isinstance(all_msgs[-1][0], datetime.datetime):
+                time_last_message =  datetime.datetime.strptime(all_msgs[-1][0], "%Y-%m-%d %H:%M:%S")
+            else:
+                time_last_message = all_msgs[-1][0]
+
 
             if all_msgs[-1][2] == 'assistant':
                 self.chats[name]["SLEEP"] = True
 
-            if not (all_msgs[-1][0] + datetime.timedelta(minutes=5)) < datetime.datetime.now():
+            if ( time_last_message + datetime.timedelta(seconds=delay)) >= datetime.datetime.now():
+                self.chats[name]["SLEEP"] = True
+
+            if (time_last_message + datetime.timedelta(seconds=response_at)) < datetime.datetime.now():
                 self.chats[name]["SLEEP"] = True
 
             self.chats[name]["FULL_CONVERSATION"] = all_msgs
@@ -170,12 +201,6 @@ class Agent:
         history = []
 
         try:
-
-            sys_template = open('.\\template', "r", encoding="UTF-8").read()
-            sys_template = sys_template.replace('#NAME', name)
-            sys_template = sys_template.replace('#INFO', self.get_date())
-
-            history.append({"role": "system","content": sys_template})
 
             for message in self.chats[name]["FULL_CONVERSATION"]:
 
@@ -205,22 +230,13 @@ class Agent:
             return False
 
 
+    def build_chunks(self, message):
 
-    def get_date(self):
+        final_chunks = []
+        g_chunks = message.split("\n")
+        final_chunks =  g_chunks
+        return final_chunks
 
-        try:
-
-            locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
-
-            agora = datetime.datetime.now()
-            dia = agora.strftime("%d/%m/%Y")
-            hora = agora.strftime("%H:%M")
-            dia_semana = agora.strftime("%A")  # agora sai em português
-
-            texto = f"Hoje é : {dia_semana}, {dia}\nAgora são: {hora}"
-            return texto
-        except:
-            return ""
 
     def sendMessage(self, message):
 
@@ -228,11 +244,14 @@ class Agent:
 
         try:
             self.web.click(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p', max=2, timeAfter=1)
-            for token in message.split("\n"):
+
+            chunks = self.build_chunks(message)
+            for token in chunks:
                 s_tokens = self.split_token(token, 30)
                 for s_token in s_tokens:
-                    self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p',s_token, max=2)
-                self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p'," ", max=2)
+                    s_token = self.remove_emojis(s_token)
+                    self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p',s_token, max=2, timeAfter=0.5)
+                self.web.sendKeys(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span/div/div[2]/div/div[3]/div/p'," ", max=2, timeAfter=0.5)
                 self.shift_enter(self.web.driver)
 
 
@@ -249,6 +268,23 @@ class Agent:
             print(traceback.format_exc())
             return False
 
+    def remove_emojis(self, text):
+        emoji_pattern = re.compile(
+            "["
+            "\U0001F600-\U0001F64F"  # emoticons
+            "\U0001F300-\U0001F5FF"  # símbolos e pictogramas
+            "\U0001F680-\U0001F6FF"  # transporte e símbolos
+            "\U0001F1E0-\U0001F1FF"  # bandeiras (letras de países)
+            "\U00002700-\U000027BF"  # símbolos diversos
+            "\U0001F900-\U0001F9FF"  # suplementos de símbolos e pictogramas
+            "\U00002600-\U000026FF"  # símbolos diversos
+            "\U00002B00-\U00002BFF"  # setas adicionais
+            "\U0001FA70-\U0001FAFF"  # objetos adicionais
+            "\U000025A0-\U000025FF"  # formas geométricas
+            "]+", flags=re.UNICODE)
+
+        return emoji_pattern.sub(r'', text)
+
     def split_token(self, texto, n):
         return [texto[i:i + n] for i in range(0, len(texto), n)]
 
@@ -259,8 +295,8 @@ class Agent:
 
         k_list = []
 
-        chat_box = self.web.getElement(By.CLASS_NAME, 'x3psx0u', max=2)
-        messages = self.web.getElements(By.CLASS_NAME, type, chat_box, max=2)
+        chat_box = self.web.getElement(By.CLASS_NAME, 'x3psx0u', max=2, timeAfter=1)
+        messages = self.web.getElements(By.CLASS_NAME, type, chat_box, max=2, timeAfter=1)
 
         for i in range(len(messages) - 1, -1, -1):
             try:
@@ -273,7 +309,7 @@ class Agent:
 
                 k_list.append([dt, text, name])
             except:
-                return k_list
+                pass
         return k_list
 
 
@@ -290,16 +326,82 @@ class Agent:
         self.web.openBrowser()
         self.web.driver.get("https://web.whatsapp.com/")
 
+    def live_chat(self, payload):
+
+        print(payload)
+
+        response_maester = self.llm_services.classify_chat(payload)
+
+        if not isinstance(response_maester, dict):
+            msg_nao_entendi = "Desculpe, não consegui entender sua mensagem 😅.\nPode reformular ou me dar mais detalhes? Posso te ajudar com nossos produtos, promoções e serviços da Gota Mágica Cosméticos.\nPara informações precisas, você também pode nos chamar no WhatsApp (33) 98895-5154!"
+            self.send_message_to_ui(msg_nao_entendi)
+            return msg_nao_entendi
+
+        elif response_maester['message_context'] == 'greeting_context':
+            msg_boas_vindas = "Olá! 👋 Bem-vindo(a) à Gota Mágica Cosméticos!\nSou Gotinha, seu assistente virtual.\nPosso te ajudar a conhecer nossos produtos, consultar estoque ou promoções.\nSe quiser, também posso te orientar sobre pedidos e contas.\nComo posso te atender hoje?"
+            self.send_message_to_ui(msg_boas_vindas)
+            return msg_boas_vindas
+
+        elif response_maester['on_context'] == False:
+            msg_nao_entendi = "Desculpe, não consegui entender sua mensagem 😅.\nPode reformular ou me dar mais detalhes?\nPosso te ajudar com nossos produtos, promoções e serviços da Gota Mágica Cosméticos.\nPara informações precisas, você também pode nos chamar no WhatsApp (33) 98895-5154!"
+            self.send_message_to_ui(msg_nao_entendi)
+            return msg_nao_entendi
+
+        elif response_maester['message_context'] == 'simple_context':
+            resp = self.llm_services.ask_simple_context(payload)
+            return resp
+
+        if self.agent_executor == False:
+            self.llm_services.loadAgent()
+
+        return self.llm_services.ask_complex_context(payload)
+
+    def send_message_to_ui(self, final_output):
+
+        chat_text = ""
+
+        palavras = final_output.split(" ")
+
+        for i, palavra in enumerate(palavras):
+            if i > 0:
+                chat_text += " "
+                html_chunk = self.markdown_to_html(chat_text)
+                storage.chat(html_chunk)
+                time.sleep(0.03)
+
+            for char in palavra:
+                chat_text += char
+                html_chunk = self.markdown_to_html(chat_text)
+                storage.chat(html_chunk)
+                time.sleep(0.03)
+
+            chat_text += " "
+            storage.chat(self.markdown_to_html(chat_text))
+
+    def markdown_to_html(self, text: str) -> str:
+        """
+        Converte **texto** em <b>texto</b> e preserva quebras de linha.
+        Escapa caracteres HTML perigosos para segurança.
+        """
+        if not isinstance(text, str):
+            return ""
+
+        # 1. Escapa caracteres HTML especiais
+        text = text.replace("&", "&amp;").replace("<", "<").replace(">", ">")
+
+        # 2. Converte **texto** → <b>texto</b>
+        text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+
+        # 3. Converte quebras de linha para <br>
+        text = text.replace("\n", "<br>")
+
+        return text
 
 
-    def ask(self, name):
 
-        try:
-            response = chat('qwen3:1.7b', self.chats[name]["HISTORY"])
 
-            total_seconds = response.total_duration
-            total_tokens = response.prompt_eval_count
 
-            return response.message.content
-        except:
-            return False
+
+
+
+

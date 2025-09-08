@@ -35,7 +35,7 @@ class Worker(QObject):
 
         while self.process.is_alive():
 
-            time.sleep(1)
+            time.sleep(0.1)
             self.progress.emit(1)
 
         self.finished.emit()

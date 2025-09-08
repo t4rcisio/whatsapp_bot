@@ -16,6 +16,10 @@ def config(data=False):
 
     return __dataControl(DATA_PATH + "\\config.json", data)
 
+def chat(data=False):
+
+    return __dataControl(DATA_PATH + "\\chat.json", data)
+
 
 
 def __dataControl(path, data=False):
